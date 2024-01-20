@@ -5,15 +5,15 @@
 
 2. Azure Kubernetes Service (DNKC)
 1. Create a Kubernetes Service (give a name and resource group)
-2. Reduce the node count from 5 to 1.
+2. Reduce the node count from 5 to 1. change node counts here if you get quota exceeded error.
 3. Click on create and go to Resource
 
 3. To Create the Secret Key:
 In Azure Shell prompt:
 1. Add a storage account.
-2. az aks get-credentials --resource-group SGRG --name DNKC
+2. az aks get-credentials --resource-group SGRG --name DNKC (az aks get-credentials --resource-group SG_RG --name SivaKC)
 3. kubectl create secret docker-registry dsconfigsn1 --docker-server=thridcrsg.azurecr.io --docker-username=thridcrsg --docker-password=9uFFTEpDmm6QTQ/qUMLzoTg/WeNZ/91OJwsj4G0m4e+ACRDJlQql --docker-email=shrivalli@srushtitech.co.in
-
+(kubectl create secret docker-registry dsconfigsn1 --docker-server=sivamcr.azurecr.io --docker-username=sivamcr --docker-password=I/cNlHaHR6ckImKhrMKjavdw4io7todJ4+ajRgJu8t+ACRAA+C88 --docker-email=sivamathi170296@gmail.com)
 
 4. Visual Studio Project - github
 1. Add a yaml file with the details of the project name and the container registry
