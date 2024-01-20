@@ -1,0 +1,70 @@
+1. Container Registry(evokecr)
+1. Create a Container Registry
+2. Repository is the tab which is a collection of Images(nothing)
+3. In Access Keys -> Enable Admin User - to know the username and the password.
+
+2. Azure Kubernetes Service (DNKC)
+1. Create a Kubernetes Service (give a name and resource group)
+2. Reduce the node count from 5 to 1.
+3. Click on create and go to Resource
+
+3. To Create the Secret Key:
+In Azure Shell prompt:
+1. Add a storage account.
+2. az aks get-credentials --resource-group SGRG --name DNKC
+3. kubectl create secret docker-registry dsconfigsn1 --docker-server=thridcrsg.azurecr.io --docker-username=thridcrsg --docker-password=9uFFTEpDmm6QTQ/qUMLzoTg/WeNZ/91OJwsj4G0m4e+ACRDJlQql --docker-email=shrivalli@srushtitech.co.in
+
+
+4. Visual Studio Project - github
+1. Add a yaml file with the details of the project name and the container registry
+and docker image name.
+2. Right click on the yaml file and go to properties
+3. Modify the "Copy to output directory" to "copy always"
+
+5. push it in github with yaml file added.
+
+
+6. Devops Starter:
+1. Pull from Github -(project name)
+2. Dockerized - no (ASP.NET core)
+3. Windows Web App
+4. Give a project name and Create
+
+
+
+
+q0^'YJgDC@P)btz
+
+Go To Resource:
+1. Build Pipeline - Click on Edit pipeline option
+2. Click on the Task1 Pipeline and choose the OS as ubuntu - 20.04 
+2. Add a stage for "Build and Push" in the Build Pipeline  -> Choose Docker from the search bar.
+Uncheck the "Zip folder creation" in the "publish"
+while configuring the build and push do the following steps:
+3. Add a New Container Registry  by clicking on the + sign
+4. Choose Azure Container Registry and choose the name of your CR
+5. Give a name to the Service Connection name  and click on save.
+6. Give a value for the Container Repository(dockersamplerepos).
+7. In Tags, give Build ID as latest.
+8. Run the Build pipeline by giving.
+
+Release Pipeline:
+1. Edit the Release Pipeline
+2. Disable the already existing default 2 steps
+3. Add a new step (kubectl Delete)
+4. give the kubernetes connection name
+5. choose "delete" from command
+6. check the use configuration box
+7. Choose the file path: (drop-> drop-> s -> deploy.yaml)
+8. In Secrets --> Choose the pass subscription
+9. Choose container Registry
+10. Provide the secret name
+11. Add another step (kubectl Create)
+12. give the kubernetes connection name
+5. choose "Create" from command
+6. check the use configuration box
+7. Choose the file path: (drop-> drop-> s -> deploy.yaml)
+8. In Secrets --> Choose the pass subscription
+9. Choose container Registry
+10. Provide the secret name
+11. Save the Release pipeline and run the pipeline.
